@@ -1,8 +1,34 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import Card from "./components/Card";
+import "./App.css"; // Importing the CSS file
 
 function Home() {
-  return <h2>ホーム</h2>;
+  const cards = [
+    {
+      title: "El poder de la lampara",
+      author: "John Smith",
+      description: "Lorem ipsum carrots, enhanced undergraduate developer, but they do occaecat time and vitality.",
+      image: "/images/sample.png", // publicフォルダ内の画像を参照
+    },
+    {
+      title: "El poder de la lampara",
+      author: "John Smith",
+      description: "Lorem ipsum carrots, enhanced undergraduate developer, but they do occaecat time and vitality.",
+      image: "/images/sample.png", // publicフォルダ内の画像を参照
+    },
+  ];
+
+  return (
+    <div>
+      <div class="site-title">Fityloop</div>
+      <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center" }}>
+        {cards.map((card, index) => (
+          <Card key={index} {...card} />
+        ))}
+      </div>
+    </div>
+  );
 }
 
 function Login() {
@@ -16,9 +42,6 @@ function NotFound() {
 function App() {
   return (
     <Router>
-      <nav>
-        <Link to="/">ホーム</Link> | <Link to="/login">ログイン</Link>
-      </nav>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
